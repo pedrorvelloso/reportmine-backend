@@ -9,7 +9,9 @@
     "start": "node .",
     "dev": "./node_modules/.bin/nodemon . --exec babel-node",
     "build": "(rm -rf build) && babel src --out-dir build",
-    "clean": "rm -rf build"
+    "clean": "rm -rf build",
+    "lint:check": "./node_modules/.bin/eslint . --ext=js,jsx;  exit 0",
+    "lint:fix": "./node_modules/.bin/eslint . --ext=js,jsx --fix;  exit 0"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -29,6 +31,7 @@
     "@babel/node": "^7.2.2",
     "@babel/plugin-proposal-object-rest-spread": "^7.3.2",
     "@babel/preset-env": "^7.3.1",
+    "eslint": "^5.13.0",
     "nodemon": "^1.18.9"
   }
 }

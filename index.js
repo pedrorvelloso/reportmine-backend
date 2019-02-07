@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config()
 import express from 'express'
 import jwt from 'express-jwt'
 import http from 'http'
@@ -19,21 +19,28 @@ app.use(bodyParser.json())
 
 // auth middleware
 const auth = jwt({
-    secret: `ha`,
-    credentialsRequired: false
-});
-app.use(auth);
+	secret: process.env.JWT_SECRET,
+	credentialsRequired: false
+})
+app.use(auth)
+
+app.use((err, req, res, next) => {
+	if (err.name === 'UnauthorizedError') {
+		res.status(401).send('Invalid Token')
+	}
+	next()
+})
 
 app.get('/', (req, res) => {
-    res.send('Backend do Gerador de Relatório')
+	res.send('Backend do Gerador de Relatório')
 })
 
 app.use('/projects', projectRouter)
-app.use('/user', userRouter)
+app.use('/login', userRouter)
 
 const server = http.createServer(app)
 
 const port = process.env.PORT || 4000
 server.listen(port, () => {
-    console.log(`• Server started succesfully, running at port ${port} 🚀`)
+	console.log(`• Server started succesfully, running at port ${port} 🚀`)
 })

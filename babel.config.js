@@ -11,11 +11,11 @@ const presets = [
 			useBuiltIns: 'usage',
 		},
 	],
-];
+]
   
 const plugins = ['@babel/plugin-proposal-object-rest-spread', ['module-resolver', {
 	'root': ['./src'],
 	'extensions': ['.js']
-}]];
+}]]
   
-module.exports = { presets, plugins };
+module.exports = { presets, plugins }
