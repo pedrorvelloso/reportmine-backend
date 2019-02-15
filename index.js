@@ -4,6 +4,7 @@ import jwt from 'express-jwt'
 import http from 'http'
 import bodyParser from 'body-parser'
 import morgan from 'morgan'
+import cors from 'cors'
 
 // routes
 import projectRouter from './src/routes/projects'
@@ -11,6 +12,7 @@ import userRouter from './src/routes/user'
 
 const app = express()
 
+app.use(cors())
 // loger
 app.use(morgan('dev'))
 // body parser
