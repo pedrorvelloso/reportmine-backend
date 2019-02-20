@@ -29,7 +29,7 @@ const getUserProjects = apiKey => {
 }
 
 const getIssuesList = (apiKey, project) => {
-	return instance.get(`projects/${project}/issues.json`, {
+	return instance.get(`projects/${project}/issues.json?limit=100`, {
 		headers: { 'X-Redmine-API-Key': apiKey }
 	})
 		.then(response => ({ data: response.data }))
@@ -39,7 +39,7 @@ const getIssuesList = (apiKey, project) => {
 }
 
 const getIssueDetail = (apiKey, issueId) => {
-	return instance.get(`${process.env.REDMINE_URL}/issues/${issueId}.json`, {
+	return instance.get(`${process.env.REDMINE_URL}/issues/${issueId}.json?include=attachments`, {
 		headers: { 'X-Redmine-API-Key': apiKey }
 	})
 		.then(response => ({ data: response.data }))
