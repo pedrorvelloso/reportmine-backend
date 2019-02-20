@@ -1,6 +1,6 @@
 {
-  "name": "relatorio-backend",
-  "version": "0.0.1",
+  "name": "reportmine-backend",
+  "version": "0.9.0",
   "main": "index.js",
   "author": "Pedro Reis Velloso dos Santos",
   "license": "MIT",
